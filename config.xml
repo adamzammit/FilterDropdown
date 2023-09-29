@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <metadata>
+        <name>SelectFilterByDropdown</name>
+        <type>plugin</type>
+        <creationDate>2016-05-03</creationDate>
+        <lastUpdate>2023-09-29</lastUpdate>
+        <author>Denis Chenu</author>
+        <authorUrl>https://www.sondages.pro/</authorUrl>
+        <supportUrl>https://support.sondages.pro/</supportUrl>
+        <version>0.1.0</version>
+        <license>GNU General Public License v3.0</license>
+        <description><![CDATA[Filter a dropdown question type by another dropdown in same page]]></description>
+    </metadata>
+    <compatibility>
+        <version>5</version>
+    </compatibility>
+    <updaters disabled="disabled"></updaters>
+</config>
