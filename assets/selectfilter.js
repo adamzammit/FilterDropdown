@@ -28,7 +28,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 function selectFilter_selectFilterByCode(qID,filterqID){
   $(document).ready(function(){
     var idSelectFilter = $("#question"+qID).find("select").attr('id');
-    $("#"+idSelectFilter).hide();
     var idSelectFiltering = $("#question"+filterqID).find("select").attr('id');
     if(typeof idSelectFilter === 'undefined' || typeof idSelectFiltering === 'undefined' )
     {
@@ -36,10 +35,12 @@ function selectFilter_selectFilterByCode(qID,filterqID){
     }
     else
     {
-      var idNewSelectFilter = 'select'+qID
-      var NewSelectElement = "<select id='"+idNewSelectFilter+"'><option value=''>"+$("#"+idSelectFilter+" option[value='']:first").text()+"</option></select>";
+      let idNewSelectFilter = 'select'+qID;
+      let NewSelectElement = $("#"+idSelectFilter).clone().removeAttr('id').attr('id',idNewSelectFilter);
+      $("#"+idSelectFilter).hide();
       $("#"+idSelectFilter).after(NewSelectElement);
-      //$("#"+idNewSelectFilter).width($("#"+idSelectFilter).width());
+      $(NewSelectElement).children().remove();
+      $("#"+idSelectFilter).find('option[value=""]:first').appendTo(NewSelectElement);
       $("#"+idSelectFiltering).change(function(){
         $('#'+idSelectFilter).val('');
         $('#'+idSelectFilter).trigger('change');
