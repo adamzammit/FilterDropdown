@@ -1,30 +1,14 @@
-/*
-Copyright 2012-2016 Denis Chenu for <http://www.sondages.pro>
+/**
+ * Utility functions for SelectFilterByDropdown plugin for LimeSurey
+ * @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&dn=gpl-3.0.txt GPL-v3-or-Later
+ */
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-/* Function to filter a select by another select
-   In the same page
-   var qID : the number of question to filter
-   var filterqID : the number of question filtering
-*/
+/**
+ * Function to filter a select by another select in the same page
+ * @version 1.0.1
+ * @param {integer} qID : the number of question to filter
+ * @param {integer} filterqID : the number of question filtering
+ */
 function selectFilter_selectFilterByCode(qID,filterqID){
   $(document).ready(function(){
     var idSelectFilter = $("#question"+qID).find("select").attr('id');
@@ -40,7 +24,7 @@ function selectFilter_selectFilterByCode(qID,filterqID){
       $("#"+idSelectFilter).hide();
       $("#"+idSelectFilter).after(NewSelectElement);
       $(NewSelectElement).children().remove();
-      $("#"+idSelectFilter).find('option[value=""]:first').appendTo(NewSelectElement);
+      $("#"+idSelectFilter).find('option[value=""]:first').clone().appendTo(NewSelectElement);
       $("#"+idSelectFiltering).change(function(){
         $('#'+idSelectFilter).val('');
         $('#'+idSelectFilter).trigger('change');
@@ -48,7 +32,7 @@ function selectFilter_selectFilterByCode(qID,filterqID){
         var valuefilter=$(this).val();
         $('#'+idNewSelectFilter+' option').not(':first').remove();
         $('#'+idSelectFilter+' option').each(function(){
-          if($(this).attr('value').indexOf(valuefilter)==0){
+          if($(this).attr('value').indexOf(valuefilter)==0 || $(this).attr('value') == '-oth-'){
             $(this).clone().appendTo('#'+idNewSelectFilter);
           }
         });
@@ -62,7 +46,8 @@ function selectFilter_selectFilterByCode(qID,filterqID){
       if($("#"+idSelectFiltering).val()!=''){
         var valuefilter=$("#"+idSelectFiltering).val();
         $('#'+idSelectFilter+' option').each(function(){
-          if($(this).attr('value').indexOf(valuefilter)==0){
+            console.warn($(this).attr('value'));
+          if($(this).attr('value').indexOf(valuefilter)==0 || $(this).attr('value') == '-oth-'){
             $(this).clone().appendTo('#'+idNewSelectFilter);
           }
         });
@@ -73,6 +58,12 @@ function selectFilter_selectFilterByCode(qID,filterqID){
     }
   });
 }
+
+/**
+ * Function to filter a dual scale second dropdown by 1st
+ * @version 1.0.0
+ * @param {integer} qID : the number of dual scale question
+ */
 function selectFilter_selectFilterDualScale(qID){
   $(document).ready(function(){
     if($("#question"+qID).hasClass('array-flexible-duel-scale')){
@@ -104,7 +95,7 @@ function selectFilter_selectFilterDualScale(qID){
           }else{
             $('#'+idNewSelectFilter).show();
             $("#"+idSelectFilter).find('option').each(function(){
-              if($(this).attr('value').substring(0, $(this).attr('value').length - 2)==valuefilter){
+              if($(this).attr('value').substring(0, $(this).attr('value').length - 2)==valuefilter || $(this).attr('value') == '-oth-'){
                 $(this).clone().appendTo('#'+idNewSelectFilter);
               }
             });
@@ -125,7 +116,7 @@ function selectFilter_selectFilterDualScale(qID){
         if($("#"+idSelectFiltering).val()!=''){
           var valuefilter=$("#"+idSelectFiltering).val().substring(0, $("#"+idSelectFiltering).val().length - 2);
           $('#'+idSelectFilter+' option').each(function(){
-            if($(this).attr('value').substring(0, $(this).attr('value').length - 2)==valuefilter){
+            if($(this).attr('value').substring(0, $(this).attr('value').length - 2)==valuefilter || $(this).attr('value') == '-oth-'){
               $(this).clone().appendTo('#'+idNewSelectFilter);
             }
           });
