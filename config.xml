@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <metadata>
-        <name>SelectFilterByDropdown</name>
+        <name>FilterDropdown</name>
         <type>plugin</type>
         <creationDate>2016-05-03</creationDate>
-        <lastUpdate>2023-09-29</lastUpdate>
-        <author>Denis Chenu</author>
-        <authorUrl>https://www.sondages.pro/</authorUrl>
-        <supportUrl>https://support.sondages.pro/</supportUrl>
-        <version>0.1.2</version>
+        <lastUpdate>2026-05-14</lastUpdate>
+        <author>Adam Zammit</author>
+        <authorUrl>https://www.acspri.org.au/software</authorUrl>
+        <supportUrl>https://www.acspri.org.au/software</supportUrl>
+        <version>1.0.0</version>
         <license>GNU General Public License v3.0</license>
-        <description><![CDATA[Filter a dropdown question type by another dropdown in same page]]></description>
+        <description><![CDATA[Filter a dropdown question by a value or expression against the response code or label]]></description>
     </metadata>
     <compatibility>
-        <version>5</version>
+        <version>6</version>
     </compatibility>
     <updaters disabled="disabled"></updaters>
 </config>
