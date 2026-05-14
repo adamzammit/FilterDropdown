@@ -3,7 +3,7 @@ LimeSurvey Plugin that filters dropdown responses by their code or label
 
 
 ## Why??
-Currently expression manager doesn't apply to answer options. This plugin allows you to filter out answer options in dropdown responses based on their code on label starting with a certain value. You can use an expression for the filtering.
+Currently expression manager doesn't apply to answer options. This plugin allows you to filter out answer options in dropdown responses based on their code or label starting with a certain value. You can use an expression for the filtering.
 
 For example, you may have a dropdown containing all possible regions in all countries. If you know the respondent's country, you could filter out to only show the applicable regions.
 
@@ -17,7 +17,7 @@ You would set up a dropdown with all countries and regions for example:
 | US1  | United States of America - California |
 | US2  | United States of America - New York   |
 
-You could then set a filter by code being: AU   which would restrict to Australia only, or a filter by label being: Australia which would also filter by Australia given the labels above.
+You could then set a filter by code being: AU which would restrict to Australia only, or a filter by label being: Australia which would also filter by Australia given the labels above.
 
 The filter uses expressions so could refer to a previous question (As long as on a previous page) or could refer to a token value
 
