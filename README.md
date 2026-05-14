@@ -9,12 +9,13 @@ For example, you may have a dropdown containing all possible regions in all coun
 
 You would set up a dropdown with all countries and regions for example:
 
-Code / Label
-AU1 / Australia - Victoria
-AU2 / Australia - New South Wales
-NZ1 / New Zealand
-US1 / United States of America - California
-US2 / United States of America - New York
+| Code | Label                                 |
+|------|---------------------------------------|
+| AU1  | Australia - Victoria                  |
+| AU2  | Australia - New South Wales           |
+| NZ1  | New Zealand                           |
+| US1  | United States of America - California |
+| US2  | United States of America - New York   |
 
 You could then set a filter by code being: AU   which would restrict to Australia only, or a filter by label being: Australia which would also filter by Australia given the labels above.
 
